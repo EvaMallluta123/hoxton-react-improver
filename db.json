@@ -1,0 +1,25 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "todo": "Eat healther"
+    },
+    {
+      "id": 2,
+      "todo": "Read a book"
+    },
+    {
+      "id": 3,
+      "todo": "Learn more about fetch and other stuff in react"
+    },
+    {
+      "id": 4,
+      "todo": "You need to practice girl. No excuses"
+    },
+    {
+      "id": 5,
+      "todo": "And yeah you have and the final project year in university"
+    }
+  ]
+}
+  
