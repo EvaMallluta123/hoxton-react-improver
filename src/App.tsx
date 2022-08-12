@@ -10,7 +10,22 @@ function App() {
   .then(resp=>resp.json())
   .then(todoFromServer=>setTodos(todoFromServer))
  },[])
-
+function createTodo(todo: string){
+  let newTodo={
+    text: todo,
+  }
+  fetch("http://localhost:3005/todos",
+  {
+    method:"Post",
+    headers:{
+      "Content type": "application/json"
+    },
+    body:JSON.stringify(newTodo)
+  })
+  .then(resp=>resp.json())
+  .then(todoFromServer=>{setTodos([...todos,todoFromServer ])
+  })
+}
   return (
     <div className="App">
       <div className="todo">
@@ -19,8 +34,14 @@ function App() {
           Hi here is a place where you can write all the thing you want to do
           for this week
         </h3>
-        <input type={"text"} placeholder={"Add a todo"} />
+        <form onSubmit={event=>{
+          event.preventDefault()
+          createTodo(event.target.text.value)
+          event.target.reset()
+        }}>
+        <input type={"text"} placeholder={"Add a todo"} name="text" required minLength={5}/>
         <input type={"button"} value={"Submit"}/>
+        </form>
         {todos.map(value => <li>{value.todo}</li>)}
       </div>
      </div>
